@@ -9,7 +9,7 @@ exports.auth = async (req, res, next) => {
         jwt.verify(token, SECRET, (err, decodedToken) => {
             if (err) {
                 res.clearCookie(COOKIE_NAME);
-                res.redirect('/auth/login');
+                return res.redirect('/auth/login');
             }
 
             req.user = token;
